@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+*.key
+*.private
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+auth.json
+secrets/
