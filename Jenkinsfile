@@ -39,7 +39,7 @@ trap 'rm -f "$keyfile"' EXIT
 printf 'key "xfer-key" { algorithm hmac-sha256; secret "%s"; };\n' "$(openssl rand -base64 32)" > "$keyfile"
 # The disposable key is public test data, so bind can read it across the test mount.
 chmod 644 "$keyfile"
-podman run --rm --network=none --user bind --entrypoint /usr/sbin/named-checkconf \
+podman run --rm --network=none --user bind --entrypoint /usr/bin/named-checkconf \
   -v "$keyfile:/etc/bind/xfer.key:ro" "$IMAGE_REPO:$IMAGE_TAG" /etc/bind/named.conf
 '''
             }
