@@ -83,6 +83,7 @@ set -euo pipefail
 umask 077
 authfile=$(mktemp)
 trap 'rm -f "$authfile"' EXIT
+printf '{"auths":{}}\n' > "$authfile"
 printf '%s' "$REG_PASS" | podman login --authfile "$authfile" --username "$REG_USER" --password-stdin "$REGISTRY"
 podman push --authfile "$authfile" "$IMAGE_REPO:$IMAGE_TAG"
 '''
