@@ -9,3 +9,6 @@ id_rsa*
 id_ed25519*
 auth.json
 secrets/
+*.tar
+trivy-report.json
+.trivy-cache/
