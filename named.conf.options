@@ -1,0 +1,21 @@
+acl authorized_networks {127.0.0.1;192.168.18.0/24;};
+options {
+ directory "/var/cache/bind";
+ pid-file "/run/named/named.pid";
+ listen-on {any;};
+ listen-on-v6 {none;};
+ recursion yes;
+ allow-query {authorized_networks;};
+ allow-recursion {authorized_networks;};
+ allow-query-cache {authorized_networks;};
+ allow-transfer {none;};
+ forward only;
+ forwarders {192.168.18.10;};
+ blackhole {10.0.0.0/8;172.16.0.0/12;224.0.0.0/4;169.254.0.0/16;};
+ validate-except {"zmansour1.300.ops";};
+ dnssec-validation auto;
+ version none;
+ hostname none;
+ server-id none;
+};
+controls {};
