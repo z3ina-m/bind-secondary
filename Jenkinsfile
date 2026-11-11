@@ -66,7 +66,7 @@ podman run --rm --network=none --entrypoint /bin/sh "$IMAGE_REPO:$IMAGE_TAG" -ec
                 // Report-only policy permitted by assignment. Scanner errors still fail the job.
                 sh '''#!/bin/bash
 set -euo pipefail
-podman save --format oci-archive -o image.tar "$IMAGE_REPO:$IMAGE_TAG"
+podman save --format docker-archive -o image.tar "$IMAGE_REPO:$IMAGE_TAG"
 trivy image --input image.tar --scanners vuln --severity HIGH,CRITICAL \
   --format json --output trivy-report.json --exit-code 0 --timeout 15m
 jq '[.Results[]?.Vulnerabilities[]?] | length' trivy-report.json
