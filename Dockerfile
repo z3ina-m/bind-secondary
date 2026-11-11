@@ -1,6 +1,6 @@
 FROM docker.io/library/ubuntu:26.04
 RUN apt-get update \
- && apt-get install -y --no-install-recommends bind9 bind9-utils \
+ && apt-get install -y --no-install-recommends apt libapt-pkg7.0 bind9 bind9-utils \
  && rm -rf /var/lib/apt/lists/* \
  && rm -f /etc/bind/rndc.key \
  && install -d -o root -g bind -m 2770 /run/named /var/lib/bind \
