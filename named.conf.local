@@ -1,0 +1,13 @@
+include "/etc/bind/xfer.key";
+zone "lab.zmansour1.300.ops" {
+ type secondary;
+ primaries {192.168.18.10 key "xfer-key";};
+ file "/var/cache/bind/db.lab.zmansour1.300.ops";
+ allow-notify {192.168.18.10;};
+};
+zone "18.168.192.in-addr.arpa" {
+ type secondary;
+ primaries {192.168.18.10 key "xfer-key";};
+ file "/var/cache/bind/db.192.168.18";
+ allow-notify {192.168.18.10;};
+};
